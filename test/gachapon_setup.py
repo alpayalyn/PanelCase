@@ -3,9 +3,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from pages.login_page import GachaponLogin
 from pages.home_page import GachaponHome
-from pages.instory_page import GachaponInStory
-from pages.campaign_page import GachaponCampaign
-from pages.web_site import GachaponWebSite
+from pages.campaign_list_page import GachaponCampaignListPage
+from pages.campaign_page import GachaponCampaignPage
+from pages.instory_page import GachaponInstory
 
 
 class Setup:
@@ -19,22 +19,22 @@ class Setup:
     option.binary_location = binary_location
     driver = webdriver.Chrome(executable_path=driver_location, options=option)
     driver.maximize_window()
-    url = "https://seleniumautomation.inone.useinsider.com/"
-    GachaponHome = GachaponHome(driver)
+    url = "https://seleniumautomation1.inone.useinsider.com/"
     GachaponLogin = GachaponLogin(driver)
-    GachaponInStory = GachaponInStory(driver)
-    GachaponCampaign = GachaponCampaign(driver)
-    GachaponWebSite = GachaponWebSite(driver)
+    GachaponHome = GachaponHome(driver)
+    GachaponCampaignListPage = GachaponCampaignListPage(driver)
+    GachaponCampaignPage = GachaponCampaignPage(driver)
+    GachaponInstory = GachaponInstory(driver)
 
     def __init__(self):
-        self.wait = WebDriverWait(self.driver, 15)
+        self.wait = WebDriverWait(self.driver, 1500)
         """Driver has been started."""
         option = Options()
-        option.add_argument("--disable-infobars")
+        # option.add_argument("--disable-infobars")
         option.add_argument("start-maximized")
-        option.add_argument("--disable-extensions")
+        # option.add_argument("--disable-extensions")
         self.driver.get(self.url)
-        self.wait = WebDriverWait(self.driver, 15)
+        self.wait = WebDriverWait(self.driver, 1500)
 
 
 if __name__ == '__main__':

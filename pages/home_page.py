@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 from base.base_page import BaseClass
 
@@ -9,10 +10,11 @@ class GachaponHome:
 
     """
 
-    MENU_CLICKED = (By.CSS_SELECTOR, ".qa-icon i-c-4") # 27
-    OPTIMIZE_CLICKED = (By.CSS_SELECTOR, ".i-c-4 mr-2") # 0
-    INSTORY_CLICKED = (By.CSS_SELECTOR, ".h-7-s d-f a-i-c px-4 py-2 ml-5") # 29
-    
+    MENU_CLICKED = (By.CSS_SELECTOR, ".in-sidebar-wrapper__groups")  # 2 .in-sidebar-wrapper__groups
+    OPTIMIZE_CLICKED = (By.CSS_SELECTOR, ".p-r")  # 10 .p-r
+    INSTORY_CLICKED = (By.CSS_SELECTOR, ".h-7-s")  # 16 .h-7-s
+    WAIT_ELEMENT_CHART = (By.CSS_SELECTOR, ".chartjs-render-monitor")
+    WAIT_ELEMENT_SCHEDULE = (By.CSS_SELECTOR, ".vue-daterange-picker")
 
     def __init__(self, driver):
         self.driver = driver
@@ -20,9 +22,8 @@ class GachaponHome:
 
     def navigating_to_in_story_page(self):
         """Website navigates to the campaign page."""
-        self.methods.click_the_element(self.MENU_CLICKED, 27)
-        self.methods.click_the_element(self.OPTIMIZE_CLICKED, 0)
-        self.methods.click_the_element(self.INSTORY_CLICKED, 29)
-
-    def checking_details(self):
-
+        self.methods.wait_for_element(self.WAIT_ELEMENT_CHART, 0)
+        self.methods.wait_for_element(self.WAIT_ELEMENT_SCHEDULE, 0)
+        self.methods.click_the_element(self.MENU_CLICKED, 2)
+        self.methods.click_the_element(self.OPTIMIZE_CLICKED, 10)
+        self.methods.click_the_element(self.INSTORY_CLICKED, 16)
